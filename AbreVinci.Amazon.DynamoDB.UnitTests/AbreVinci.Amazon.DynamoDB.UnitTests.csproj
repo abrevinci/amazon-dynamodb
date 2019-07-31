@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AbreVinci.Amazon.DynamoDB.Default\AbreVinci.Amazon.DynamoDB.Default.csproj" />
+    <ProjectReference Include="..\AbreVinci.Amazon.DynamoDB.Mock\AbreVinci.Amazon.DynamoDB.Mock.csproj" />
     <ProjectReference Include="..\AbreVinci.Amazon.DynamoDB\AbreVinci.Amazon.DynamoDB.csproj" />
   </ItemGroup>
 
