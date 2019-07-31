@@ -1,0 +1,22 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeStyle/CodeCleanup/Profiles/=Update_0020header/@EntryIndexedValue">&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;Profile name="Update header"&gt;&lt;CSCodeStyleAttributes ArrangeTypeAccessModifier="False" ArrangeTypeMemberAccessModifier="False" SortModifiers="False" RemoveRedundantParentheses="False" AddMissingParentheses="False" ArrangeBraces="False" ArrangeAttributes="False" ArrangeArgumentsStyle="False" ArrangeCodeBodyStyle="False" ArrangeVarStyle="False" /&gt;&lt;CSOptimizeUsings&gt;&lt;OptimizeUsings&gt;False&lt;/OptimizeUsings&gt;&lt;EmbraceInRegion&gt;False&lt;/EmbraceInRegion&gt;&lt;RegionName&gt;&lt;/RegionName&gt;&lt;/CSOptimizeUsings&gt;&lt;XAMLCollapseEmptyTags&gt;False&lt;/XAMLCollapseEmptyTags&gt;&lt;CSUpdateFileHeader&gt;True&lt;/CSUpdateFileHeader&gt;&lt;IDEA_SETTINGS&gt;&amp;lt;profile version="1.0"&amp;gt;
+  &amp;lt;option name="myName" value="Update header" /&amp;gt;
+  &amp;lt;inspection_tool class="ES6ShorthandObjectProperty" enabled="false" level="INFORMATION" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="JSArrowFunctionBracesCanBeRemoved" enabled="false" level="INFORMATION" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="JSPrimitiveTypeWrapperUsage" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="JSRemoveUnnecessaryParentheses" enabled="false" level="INFORMATION" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="JSUnnecessarySemicolon" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="RdInspectionToolStub" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="TypescriptExplicitMemberType" enabled="false" level="INFORMATION" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="UnnecessaryContinueJS" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="UnnecessaryLabelJS" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="UnnecessaryLabelOnBreakStatementJS" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="UnnecessaryLabelOnContinueStatementJS" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="UnnecessaryReturnJS" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="UnterminatedStatementJS" enabled="false" level="WARNING" enabled_by_default="false" /&amp;gt;
+  &amp;lt;inspection_tool class="WrongPropertyKeyValueDelimiter" enabled="false" level="WEAK WARNING" enabled_by_default="false" /&amp;gt;
+&amp;lt;/profile&amp;gt;&lt;/IDEA_SETTINGS&gt;&lt;VBReformatCode&gt;True&lt;/VBReformatCode&gt;&lt;HtmlReformatCode&gt;True&lt;/HtmlReformatCode&gt;&lt;CSReorderTypeMembers&gt;True&lt;/CSReorderTypeMembers&gt;&lt;CSReformatCode&gt;True&lt;/CSReformatCode&gt;&lt;/Profile&gt;</s:String>
+	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">Copyright (C) 2019 AbreVinci Digital AB - All Rights Reserved</s:String>
+	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=DB/@EntryIndexedValue">DB</s:String>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Abre/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Vinci/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
