@@ -8,6 +8,19 @@ namespace AbreVinci.Amazon.DynamoDB.Model
     [PublicAPI]
     public class DynamoDBTableDescription
     {
+        public DynamoDBTableDescription(string name, DynamoDBAttributePath hashKeyAttribute, params DynamoDBIndexDescription[] indexDescriptions)
+            : this(name, hashKeyAttribute, null, indexDescriptions)
+        {
+        }
+
+        public DynamoDBTableDescription(string name, DynamoDBAttributePath hashKeyAttribute, DynamoDBAttributePath rangeKeyAttribute, params DynamoDBIndexDescription[] indexDescriptions)
+        {
+            Name = name;
+            HashKeyAttribute = hashKeyAttribute;
+            RangeKeyAttribute = rangeKeyAttribute;
+            Indexes = indexDescriptions;
+        }
+        
         public string Name { get; }
         public DynamoDBAttributePath HashKeyAttribute { get; }
         public DynamoDBAttributePath RangeKeyAttribute { get; }

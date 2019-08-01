@@ -14,7 +14,22 @@ namespace AbreVinci.Amazon.DynamoDB
     public interface IDynamoDB: IDynamoDBReadSyntax, IDynamoDBWriteSyntax
     {
         Task<DynamoDBTableDescription> DescribeTableAsync(string tableName);
-        IDynamoDBTable AccessTable(DynamoDBTableDescription description);
+        
+        /// <summary>
+        /// Access a table interface using an already known description.
+        /// </summary>
+        /// <remarks>
+        /// A table description might be retrieved by calling <see cref="DescribeTableAsync(string)"/>
+        /// </remarks>
+        /// <param name="tableDescription">The table description describing the table's name, keys and indexes.</param>
+        /// <returns>A table interface which can be used to perform per-table operations.</returns>
+        /// <example>
+        /// <code>
+        /// var tableDescription = new DynamoDBTableDescription("MyTable", "id);
+        /// var table = dynamoDB.AccessTable(tableDescription);
+        /// </code>
+        /// </example>
+        IDynamoDBTable AccessTable(DynamoDBTableDescription tableDescription);
 
         IDynamoDBCreateTableSyntax CreateTable(string tableName);
         Task DeleteTableAsync(string tableName, bool waitForCompletion = false);
