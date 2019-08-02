@@ -11,6 +11,7 @@ namespace AbreVinci.Amazon.DynamoDB.CreateTable
     {
         IDynamoDBCreateTableThroughputSelectedSyntax WithKeyProjection();
         IDynamoDBCreateTableThroughputSelectedSyntax WithFullProjection();
+        IDynamoDBCreateTableThroughputSelectedSyntax WithProjection(params DynamoDBAttributePath[] nonKeyAttributes);
         IDynamoDBCreateTableThroughputSelectedSyntax WithProjection(IEnumerable<DynamoDBAttributePath> nonKeyAttributes);
     }
 }

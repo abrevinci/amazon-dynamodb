@@ -11,11 +11,14 @@ namespace AbreVinci.Amazon.DynamoDB.Table.BatchRead
     public interface IDynamoDBTableBatchReadSyntax
     {
         IDynamoDBTableBatchReadSyntax IncludeAttributes(params DynamoDBAttributePath[] attributes);
+        IDynamoDBTableBatchReadSyntax IncludeAttributes(IEnumerable<DynamoDBAttributePath> attributes);
         
         IDynamoDBTableBatchReadTerminationSyntax Get(DynamoDBKeyValue hashKey);
         IDynamoDBTableBatchReadTerminationSyntax Get(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey);
 
+        IDynamoDBTableBatchReadTerminationSyntax Get(params DynamoDBKeyValue[] hashKeys);
         IDynamoDBTableBatchReadTerminationSyntax Get(IEnumerable<DynamoDBKeyValue> hashKeys);
+        IDynamoDBTableBatchReadTerminationSyntax Get(params (DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey)[] compositeKeys);
         IDynamoDBTableBatchReadTerminationSyntax Get(IEnumerable<(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey)> compositeKeys);
     }
 }

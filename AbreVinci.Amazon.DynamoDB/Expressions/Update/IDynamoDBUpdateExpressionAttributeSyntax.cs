@@ -25,6 +25,7 @@ namespace AbreVinci.Amazon.DynamoDB.Expressions.Update
         IDynamoDBUpdateExpressionNonEmptySyntax RemoveSetItem<T>(T value);
 
         IDynamoDBUpdateExpressionAttributeSyntax Attr(DynamoDBAttributePath childAttribute);
+        IDynamoDBUpdateExpressionNonEmptySyntax Remove(params DynamoDBAttributePath[] childAttributes);
         IDynamoDBUpdateExpressionNonEmptySyntax Remove(IEnumerable<DynamoDBAttributePath> childAttributes);
     }
 }

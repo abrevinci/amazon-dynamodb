@@ -1,8 +1,10 @@
 // Copyright (C) 2019 AbreVinci Digital AB - All Rights Reserved
 
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AbreVinci.Amazon.DynamoDB.BatchRead;
 using AbreVinci.Amazon.DynamoDB.BatchWrite;
+using AbreVinci.Amazon.DynamoDB.Core;
 using AbreVinci.Amazon.DynamoDB.CreateTable;
 using AbreVinci.Amazon.DynamoDB.Default.Internal.Table;
 using AbreVinci.Amazon.DynamoDB.Model;
@@ -14,16 +16,23 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal
 {
     internal class DynamoDB : IDynamoDB
     {
-        public IDynamoDBBatchReadSyntax BatchRead()
-        {
-            throw new System.NotImplementedException();
-        }
+        #region Fields
+        
+        private readonly IDynamoDBClient _client;
+        
+        #endregion
+        
+        #region Constructor
 
-        public IDynamoDBBatchWriteSyntax BatchWrite()
+        public DynamoDB(IDynamoDBClient client)
         {
-            throw new System.NotImplementedException();
+            _client = client;
         }
-
+        
+        #endregion
+        
+        #region IDynamoDB
+        
         public Task<DynamoDBTableDescription> DescribeTableAsync(string tableName)
         {
             throw new System.NotImplementedException();
@@ -31,7 +40,7 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal
 
         public IDynamoDBTable AccessTable(DynamoDBTableDescription tableDescription)
         {
-            return new DynamoDBTable(tableDescription);
+            return new DynamoDBTable(_client, tableDescription);
         }
 
         public IDynamoDBCreateTableSyntax CreateTable(string tableName)
@@ -49,6 +58,11 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal
             throw new System.NotImplementedException();
         }
 
+        public IDynamoDBReadSyntax UseConsistentRead(IEnumerable<IDynamoDBTable> tables)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IDynamoDBTransactionalReadSyntax TransactionalRead()
         {
             throw new System.NotImplementedException();
@@ -58,5 +72,25 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal
         {
             throw new System.NotImplementedException();
         }
+        
+        #endregion
+        
+        #region IDynamoDBReadSyntax
+        
+        public IDynamoDBBatchReadSyntax BatchRead()
+        {
+            throw new System.NotImplementedException();
+        }
+        
+        #endregion
+        
+        #region IDynamoDBWriteSyntax
+
+        public IDynamoDBBatchWriteSyntax BatchWrite()
+        {
+            throw new System.NotImplementedException();
+        }
+        
+        #endregion
     }
 }

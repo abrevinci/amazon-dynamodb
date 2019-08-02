@@ -15,10 +15,7 @@ namespace AbreVinci.Amazon.DynamoDB.Model
         
         public IReadOnlyList<string> Path { get; }
 
-        public static implicit operator DynamoDBAttributePath(string path)
-        {
-            return new DynamoDBAttributePath(path);
-        }
+        public static implicit operator DynamoDBAttributePath(string path) => new DynamoDBAttributePath(path);
 
         public override string ToString()
         {
