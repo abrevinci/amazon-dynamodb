@@ -13,7 +13,7 @@ namespace AbreVinci.Amazon.DynamoDB.Model
             HashKeyAttribute = hashKeyAttribute;
             RangeKeyAttribute = rangeKeyAttribute;
         }
-        
+
         public string Name { get; }
         public bool IsLocal { get; }
         public DynamoDBAttributePath HashKeyAttribute { get; }

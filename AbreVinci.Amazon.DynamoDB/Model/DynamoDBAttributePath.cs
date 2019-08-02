@@ -12,7 +12,7 @@ namespace AbreVinci.Amazon.DynamoDB.Model
         {
             Path = path.Split('.');
         }
-        
+
         public IReadOnlyList<string> Path { get; }
 
         public static implicit operator DynamoDBAttributePath(string path) => new DynamoDBAttributePath(path);
