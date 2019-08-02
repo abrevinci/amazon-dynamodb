@@ -17,7 +17,7 @@ namespace AbreVinci.Amazon.DynamoDB.Model.Values
 
         #region Constructors
 
-        private DynamoDBNumber(string value)
+        internal DynamoDBNumber(string value)
         {
             _value = value;
         }
@@ -145,6 +145,13 @@ namespace AbreVinci.Amazon.DynamoDB.Model.Values
         {
             return !Equals(lhs, rhs);
         }
+
+        #endregion
+        
+        #region Internal
+
+        // ReSharper disable once ConvertToAutoPropertyWhenPossible
+        internal string InternalValue => _value;
 
         #endregion
     }

@@ -2,4 +2,4 @@
 
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("AbreVinci.Amazon.DynamoDB.UnitTests")]
+[assembly: InternalsVisibleTo("AbreVinci.Amazon.DynamoDB.Default")]

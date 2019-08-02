@@ -13,13 +13,13 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table.Index
     internal class DynamoDBIndex : IDynamoDBIndex
     {
         #region Fields
-        
+
         private readonly IDynamoDBClient _client;
         private readonly DynamoDBTable _table;
         private readonly DynamoDBIndexDescription _indexDescription;
-        
+
         #endregion
-        
+
         #region Constructor
 
         public DynamoDBIndex(IDynamoDBClient client, DynamoDBTable table, DynamoDBIndexDescription indexDescription)
@@ -28,22 +28,22 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table.Index
             _table = table;
             _indexDescription = indexDescription;
         }
-        
+
         #endregion
 
         #region IDynamoDBIndex
-        
+
         public string Name => _indexDescription.Name;
         public DynamoDBAttributePath HashKeyAttribute => _indexDescription.HashKeyAttribute;
         public DynamoDBAttributePath RangeKeyAttribute => _indexDescription.RangeKeyAttribute;
-        
+
         public IDynamoDBIndexReadSyntax UseConsistentRead()
         {
             throw new System.NotImplementedException();
         }
-        
+
         #endregion
-        
+
         #region IDynamoDBIndexReadSyntax
 
         public IDynamoDBIndexReadSyntax IncludeAttributes(params DynamoDBAttributePath[] attributes)
@@ -65,7 +65,7 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table.Index
         {
             throw new System.NotImplementedException();
         }
-        
+
         #endregion
     }
 }

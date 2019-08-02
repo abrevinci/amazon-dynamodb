@@ -14,7 +14,7 @@ namespace AbreVinci.Amazon.DynamoDB.Table.Index
     {
         IDynamoDBIndexReadSyntax IncludeAttributes(params DynamoDBAttributePath[] attributes);
         IDynamoDBIndexReadSyntax IncludeAttributes(IEnumerable<DynamoDBAttributePath> attributes);
-        
+
         IDynamoDBIndexQuerySyntax Query(DynamoDBKeyValue hashKey);
         IDynamoDBIndexQuerySyntax Query(DynamoDBKeyValue hashKey, DynamoDBKeyConditionExpression keyConditionExpression);
     }
