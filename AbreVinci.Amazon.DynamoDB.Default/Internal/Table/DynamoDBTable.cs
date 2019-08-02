@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using AbreVinci.Amazon.DynamoDB.Core;
 using AbreVinci.Amazon.DynamoDB.Default.Internal.Table.Index;
 using AbreVinci.Amazon.DynamoDB.Expressions.KeyCondition;
 using AbreVinci.Amazon.DynamoDB.Expressions.Predicate;
@@ -24,16 +25,28 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table
 {
     internal class DynamoDBTable : IDynamoDBTable
     {
+        #region Fields
+        
+        private readonly IDynamoDBClient _client;
         private readonly DynamoDBTableDescription _tableDescription;
+        
+        #endregion
+        
+        #region Constructor
 
-        public DynamoDBTable(DynamoDBTableDescription tableDescription)
+        public DynamoDBTable(IDynamoDBClient client, DynamoDBTableDescription tableDescription)
         {
+            _client = client;
             _tableDescription = tableDescription;
             Indexes = new ReadOnlyDictionary<string, IDynamoDBIndex>(
                 tableDescription.Indexes.ToDictionary(
                     indexDescription => indexDescription.Name, 
-                    indexDescription => (IDynamoDBIndex)new DynamoDBIndex(this, indexDescription)));
+                    indexDescription => (IDynamoDBIndex)new DynamoDBIndex(client, this, indexDescription)));
         }
+        
+        #endregion
+        
+        #region IDynamoDBTable
 
         public string Name => _tableDescription.Name;
         public DynamoDBAttributePath HashKeyAttribute => _tableDescription.HashKeyAttribute;
@@ -60,7 +73,16 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table
             throw new System.NotImplementedException();
         }
         
+        #endregion
+        
+        #region IDynamoDBTableReadSyntax
+        
         public IDynamoDBTableReadSyntax IncludeAttributes(params DynamoDBAttributePath[] attributes)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IDynamoDBTableReadSyntax IncludeAttributes(IEnumerable<DynamoDBAttributePath> attributes)
         {
             throw new System.NotImplementedException();
         }
@@ -94,6 +116,10 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table
         {
             throw new System.NotImplementedException();
         }
+        
+        #endregion
+        
+        #region IDynamoDBTableWriteSyntax
 
         public Task<DynamoDBMap> PutAsync(DynamoDBMap item, bool returnOldItem = false)
         {
@@ -124,5 +150,7 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table
         {
             throw new System.NotImplementedException();
         }
+        
+        #endregion
     }
 }

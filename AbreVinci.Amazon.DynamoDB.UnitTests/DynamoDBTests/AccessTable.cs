@@ -1,22 +1,31 @@
 // Copyright (C) 2019 AbreVinci Digital AB - All Rights Reserved
 
+using AbreVinci.Amazon.DynamoDB.Core;
 using AbreVinci.Amazon.DynamoDB.Model;
 using FluentAssertions;
+using Moq;
 using Xunit;
 
-namespace AbreVinci.Amazon.DynamoDB.UnitTests.Default.DynamoDBTests
+namespace AbreVinci.Amazon.DynamoDB.UnitTests.DynamoDBTests
 {
     public class AccessTable
     {
+        private readonly IDynamoDB _dynamoDB;
+        
+        public AccessTable()
+        {
+            var client = new Mock<IDynamoDBClient>();
+            _dynamoDB = new DynamoDB.Default.Internal.DynamoDB(client.Object);
+        }
+        
         [Fact]
         public void ShouldReturnTableInterfaceWithCorrectAttributes()
         {
             // Arrange
             var tableDescription = new DynamoDBTableDescription("MyTable", "id");
-            var dynamoDB = new DynamoDB.Default.Internal.DynamoDB();
 
             // Act
-            var table = dynamoDB.AccessTable(tableDescription);
+            var table = _dynamoDB.AccessTable(tableDescription);
 
             // Assert
             table.Name.Should().Be("MyTable");
@@ -32,10 +41,9 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.Default.DynamoDBTests
             var index1Description = new DynamoDBIndexDescription("Index1", "key3");
             var index2Description = new DynamoDBIndexDescription("Index2", "key2", "key3");
             var tableDescription = new DynamoDBTableDescription("MyTable", "key1", "key2", index1Description, index2Description);
-            var dynamoDB = new DynamoDB.Default.Internal.DynamoDB();
 
             // Act
-            var table = dynamoDB.AccessTable(tableDescription);
+            var table = _dynamoDB.AccessTable(tableDescription);
 
             // Assert
             table.Name.Should().Be("MyTable");

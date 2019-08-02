@@ -10,6 +10,7 @@ namespace AbreVinci.Amazon.DynamoDB.Expressions.Update
     public interface IDynamoDBUpdateExpressionSyntax
     {
         IDynamoDBUpdateExpressionAttributeSyntax Attr(DynamoDBAttributePath attribute);
+        IDynamoDBUpdateExpressionNonEmptySyntax Remove(params DynamoDBAttributePath[] attributes);
         IDynamoDBUpdateExpressionNonEmptySyntax Remove(IEnumerable<DynamoDBAttributePath> attributes);
     }
 }

@@ -21,6 +21,7 @@ namespace AbreVinci.Amazon.DynamoDB.Expressions.Predicate
         IDynamoDBPredicateExpressionNonEmptySyntax IsLessThanOrEquals(DynamoDBPrimitive value);
         IDynamoDBPredicateExpressionNonEmptySyntax IsBetween(DynamoDBPrimitive value1, DynamoDBPrimitive value2);
         IDynamoDBPredicateExpressionNonEmptySyntax BeginsWith(string value);
+        IDynamoDBPredicateExpressionNonEmptySyntax IsIn(params DynamoDBPrimitive[] values);
         IDynamoDBPredicateExpressionNonEmptySyntax IsIn(IEnumerable<DynamoDBPrimitive> values);
         IDynamoDBPredicateExpressionNonEmptySyntax Contains(DynamoDBPrimitive value);
         IDynamoDBPredicateExpressionNonEmptySyntax SizeEquals(int size);

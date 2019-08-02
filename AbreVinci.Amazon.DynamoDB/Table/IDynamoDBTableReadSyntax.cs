@@ -1,5 +1,6 @@
 // Copyright (C) 2019 AbreVinci Digital AB - All Rights Reserved
 
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AbreVinci.Amazon.DynamoDB.Expressions.KeyCondition;
 using AbreVinci.Amazon.DynamoDB.Model;
@@ -15,6 +16,7 @@ namespace AbreVinci.Amazon.DynamoDB.Table
     public interface IDynamoDBTableReadSyntax
     {
         IDynamoDBTableReadSyntax IncludeAttributes(params DynamoDBAttributePath[] attributes);
+        IDynamoDBTableReadSyntax IncludeAttributes(IEnumerable<DynamoDBAttributePath> attributes);
         
         Task<DynamoDBMap> GetAsync(DynamoDBKeyValue hashKey);
         Task<DynamoDBMap> GetAsync(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey);
