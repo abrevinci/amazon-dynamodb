@@ -20,7 +20,7 @@ namespace AbreVinci.Amazon.DynamoDB.Model
             RangeKeyAttribute = rangeKeyAttribute;
             Indexes = indexDescriptions;
         }
-        
+
         public string Name { get; }
         public DynamoDBAttributePath HashKeyAttribute { get; }
         public DynamoDBAttributePath RangeKeyAttribute { get; }

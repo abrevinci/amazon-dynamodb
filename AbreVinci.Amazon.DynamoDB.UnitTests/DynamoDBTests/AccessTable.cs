@@ -11,13 +11,13 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.DynamoDBTests
     public class AccessTable
     {
         private readonly IDynamoDB _dynamoDB;
-        
+
         public AccessTable()
         {
             var client = new Mock<IDynamoDBClient>();
             _dynamoDB = new DynamoDB.Default.Internal.DynamoDB(client.Object);
         }
-        
+
         [Fact]
         public void ShouldReturnTableInterfaceWithCorrectAttributes()
         {
@@ -33,7 +33,7 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.DynamoDBTests
             table.RangeKeyAttribute.Should().BeNull();
             table.Indexes.Should().BeEmpty();
         }
-        
+
         [Fact]
         public void ShouldReturnTableInterfaceWithCorrectAttributesAndIndexes()
         {
