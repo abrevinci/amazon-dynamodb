@@ -13,7 +13,7 @@ namespace AbreVinci.Amazon.DynamoDB.Table.BatchWrite
         IDynamoDBBatchWriteTerminationSyntax Put(DynamoDBMap item);
         IDynamoDBBatchWriteTerminationSyntax Put(params DynamoDBMap[] items);
         IDynamoDBBatchWriteTerminationSyntax Put(IEnumerable<DynamoDBMap> items);
-        
+
         IDynamoDBBatchWriteTerminationSyntax Delete(DynamoDBKeyValue hashKey);
         IDynamoDBBatchWriteTerminationSyntax Delete(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey);
         IDynamoDBBatchWriteTerminationSyntax Delete(params DynamoDBKeyValue[] hashKeys);

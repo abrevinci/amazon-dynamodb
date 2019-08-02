@@ -2,14 +2,15 @@
 
 using AbreVinci.Amazon.DynamoDB.Core;
 using AbreVinci.Amazon.DynamoDB.Default.Internal.Core;
+using Amazon.DynamoDBv2;
 
 namespace AbreVinci.Amazon.DynamoDB.Default
 {
     public static class DynamoDB
     {
-        public static IDynamoDB Create()
+        public static IDynamoDB Create(IAmazonDynamoDB awsClient, DynamoDBClientConfig config = null)
         {
-            return new Internal.DynamoDB(new DynamoDBClient());
+            return new Internal.DynamoDB(new DynamoDBClient(awsClient, config));
         }
 
         public static IDynamoDB Create(IDynamoDBClient client)

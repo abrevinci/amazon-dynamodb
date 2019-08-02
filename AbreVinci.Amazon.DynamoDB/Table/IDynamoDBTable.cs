@@ -19,10 +19,14 @@ namespace AbreVinci.Amazon.DynamoDB.Table
         DynamoDBAttributePath RangeKeyAttribute { get; }
         IReadOnlyDictionary<string, IDynamoDBIndex> Indexes { get; }
 
+        /// <summary>
+        /// Turns on consistent read for consecutive read operations.
+        /// </summary>
+        /// <returns>A continuation context that allows setting up and executing per-table non-transaction read requests (now with consistent read enabled).</returns>
         IDynamoDBTableReadSyntax UseConsistentRead();
 
         IDynamoDBTableConditionalWriteSyntax If(DynamoDBPredicateExpression predicateExpression);
-        
+
         IDynamoDBTableTransactionalReadSyntax TransactionalRead();
         IDynamoDBTableTransactionalWriteSyntax TransactionalWrite();
     }

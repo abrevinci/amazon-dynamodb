@@ -12,7 +12,7 @@ namespace AbreVinci.Amazon.DynamoDB.Table.Query
     {
         IDynamoDBTableQuerySyntax IncludeAttributes(params DynamoDBAttributePath[] attributes);
         IDynamoDBTableQuerySyntax IncludeAttributes(IEnumerable<DynamoDBAttributePath> attributes);
-        
+
         IDynamoDBTableQueryFilteredSyntax Filter(DynamoDBPredicateExpression predicateExpression);
     }
 }

@@ -12,7 +12,7 @@ namespace AbreVinci.Amazon.DynamoDB.Table.BatchRead
     {
         IDynamoDBTableBatchReadSyntax IncludeAttributes(params DynamoDBAttributePath[] attributes);
         IDynamoDBTableBatchReadSyntax IncludeAttributes(IEnumerable<DynamoDBAttributePath> attributes);
-        
+
         IDynamoDBTableBatchReadTerminationSyntax Get(DynamoDBKeyValue hashKey);
         IDynamoDBTableBatchReadTerminationSyntax Get(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey);
 
