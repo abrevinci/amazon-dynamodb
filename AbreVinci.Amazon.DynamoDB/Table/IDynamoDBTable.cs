@@ -15,8 +15,8 @@ namespace AbreVinci.Amazon.DynamoDB.Table
     public interface IDynamoDBTable : IDynamoDBTableReadSyntax, IDynamoDBTableWriteSyntax
     {
         string Name { get; }
-        DynamoDBAttributePath HashKeyAttribute { get; }
-        DynamoDBAttributePath RangeKeyAttribute { get; }
+        DynamoDBAttributePath PartitionKeyAttribute { get; }
+        DynamoDBAttributePath SortKeyAttribute { get; }
         IReadOnlyDictionary<string, IDynamoDBIndex> Indexes { get; }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace AbreVinci.Amazon.DynamoDB.Table
         /// <returns>A continuation context that allows setting up and executing per-table non-transaction read requests (now with consistent read enabled).</returns>
         /// <example>
         /// <code>
-        /// var item = await table.UseConsistentRead().GetAsync(hashKey);
+        /// var item = await table.UseConsistentRead().GetAsync(partitionKey);
         /// </code>
         /// </example>
         IDynamoDBTableReadSyntax UseConsistentRead();

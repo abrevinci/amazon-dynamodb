@@ -9,6 +9,6 @@ namespace AbreVinci.Amazon.DynamoDB.CreateTable
     [PublicAPI]
     public interface IDynamoDBCreateTableLocalSecondaryIndexSyntax
     {
-        IDynamoDBCreateTableLocalSecondaryIndexKeySelectedSyntax WithRangeKey<TRangeKey>(DynamoDBAttributePath rangeKeyAttribute) where TRangeKey : DynamoDBKeyValue;
+        IDynamoDBCreateTableLocalSecondaryIndexKeySelectedSyntax WithSortKey<TSortKey>(DynamoDBAttributePath sortKeyAttribute) where TSortKey : DynamoDBKeyValue;
     }
 }

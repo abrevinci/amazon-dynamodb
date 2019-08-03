@@ -8,22 +8,22 @@ namespace AbreVinci.Amazon.DynamoDB.Model
     [PublicAPI]
     public class DynamoDBTableDescription
     {
-        public DynamoDBTableDescription(string name, DynamoDBAttributePath hashKeyAttribute, params DynamoDBIndexDescription[] indexDescriptions)
-            : this(name, hashKeyAttribute, null, indexDescriptions)
+        public DynamoDBTableDescription(string name, DynamoDBAttributePath partitionKeyAttribute, params DynamoDBIndexDescription[] indexDescriptions)
+            : this(name, partitionKeyAttribute, null, indexDescriptions)
         {
         }
 
-        public DynamoDBTableDescription(string name, DynamoDBAttributePath hashKeyAttribute, DynamoDBAttributePath rangeKeyAttribute, params DynamoDBIndexDescription[] indexDescriptions)
+        public DynamoDBTableDescription(string name, DynamoDBAttributePath partitionKeyAttribute, DynamoDBAttributePath sortKeyAttribute, params DynamoDBIndexDescription[] indexDescriptions)
         {
             Name = name;
-            HashKeyAttribute = hashKeyAttribute;
-            RangeKeyAttribute = rangeKeyAttribute;
+            PartitionKeyAttribute = partitionKeyAttribute;
+            SortKeyAttribute = sortKeyAttribute;
             Indexes = indexDescriptions;
         }
 
         public string Name { get; }
-        public DynamoDBAttributePath HashKeyAttribute { get; }
-        public DynamoDBAttributePath RangeKeyAttribute { get; }
+        public DynamoDBAttributePath PartitionKeyAttribute { get; }
+        public DynamoDBAttributePath SortKeyAttribute { get; }
         public IEnumerable<DynamoDBIndexDescription> Indexes { get; }
     }
 }

@@ -14,11 +14,11 @@ namespace AbreVinci.Amazon.DynamoDB.Table.BatchWrite
         IDynamoDBBatchWriteTerminationSyntax Put(params DynamoDBMap[] items);
         IDynamoDBBatchWriteTerminationSyntax Put(IEnumerable<DynamoDBMap> items);
 
-        IDynamoDBBatchWriteTerminationSyntax Delete(DynamoDBKeyValue hashKey);
-        IDynamoDBBatchWriteTerminationSyntax Delete(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey);
-        IDynamoDBBatchWriteTerminationSyntax Delete(params DynamoDBKeyValue[] hashKeys);
-        IDynamoDBBatchWriteTerminationSyntax Delete(IEnumerable<DynamoDBKeyValue> hashKeys);
-        IDynamoDBBatchWriteTerminationSyntax Delete(params (DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey)[] compositeKeys);
-        IDynamoDBBatchWriteTerminationSyntax Delete(IEnumerable<(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey)> compositeKeys);
+        IDynamoDBBatchWriteTerminationSyntax Delete(DynamoDBKeyValue partitionKey);
+        IDynamoDBBatchWriteTerminationSyntax Delete(DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey);
+        IDynamoDBBatchWriteTerminationSyntax Delete(params DynamoDBKeyValue[] partitionKeys);
+        IDynamoDBBatchWriteTerminationSyntax Delete(IEnumerable<DynamoDBKeyValue> partitionKeys);
+        IDynamoDBBatchWriteTerminationSyntax Delete(params (DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey)[] compositeKeys);
+        IDynamoDBBatchWriteTerminationSyntax Delete(IEnumerable<(DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey)> compositeKeys);
     }
 }

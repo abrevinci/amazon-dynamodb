@@ -8,13 +8,13 @@ namespace AbreVinci.Amazon.DynamoDB.Expressions.KeyCondition
     [PublicAPI]
     public interface IDynamoDBKeyConditionExpressionSyntax
     {
-        IDynamoDBKeyConditionExpressionTerminationSyntax RangeKeyEquals(DynamoDBKeyValue value);
-        IDynamoDBKeyConditionExpressionTerminationSyntax RangeKeyDoesNotEqual(DynamoDBKeyValue value);
-        IDynamoDBKeyConditionExpressionTerminationSyntax RangeKeyIsGreaterThan(DynamoDBKeyValue value);
-        IDynamoDBKeyConditionExpressionTerminationSyntax RangeKeyIsGreaterThanOrEquals(DynamoDBKeyValue value);
-        IDynamoDBKeyConditionExpressionTerminationSyntax RangeKeyIsLessThan(DynamoDBKeyValue value);
-        IDynamoDBKeyConditionExpressionTerminationSyntax RangeKeyIsLessThanOrEquals(DynamoDBKeyValue value);
-        IDynamoDBKeyConditionExpressionTerminationSyntax RangeKeyIsBetween(DynamoDBKeyValue value1, DynamoDBKeyValue value2);
-        IDynamoDBKeyConditionExpressionTerminationSyntax RangeKeyBeginsWith(string value);
+        IDynamoDBKeyConditionExpressionTerminationSyntax SortKeyEquals(DynamoDBKeyValue value);
+        IDynamoDBKeyConditionExpressionTerminationSyntax SortKeyDoesNotEqual(DynamoDBKeyValue value);
+        IDynamoDBKeyConditionExpressionTerminationSyntax SortKeyIsGreaterThan(DynamoDBKeyValue value);
+        IDynamoDBKeyConditionExpressionTerminationSyntax SortKeyIsGreaterThanOrEquals(DynamoDBKeyValue value);
+        IDynamoDBKeyConditionExpressionTerminationSyntax SortKeyIsLessThan(DynamoDBKeyValue value);
+        IDynamoDBKeyConditionExpressionTerminationSyntax SortKeyIsLessThanOrEquals(DynamoDBKeyValue value);
+        IDynamoDBKeyConditionExpressionTerminationSyntax SortKeyIsBetween(DynamoDBKeyValue value1, DynamoDBKeyValue value2);
+        IDynamoDBKeyConditionExpressionTerminationSyntax SortKeyBeginsWith(string value);
     }
 }

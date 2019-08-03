@@ -38,22 +38,22 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table
             return _client.PutAsync(request);
         }
 
-        public Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue hashKey, bool returnDeletedItem = false)
+        public Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue partitionKey, bool returnDeletedItem = false)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey, bool returnDeletedItem = false)
+        public Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey, bool returnDeletedItem = false)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<DynamoDBMap> UpdateAsync(DynamoDBKeyValue hashKey, DynamoDBUpdateExpression updateExpression, DynamoDBUpdateReturnValue returnValue = DynamoDBUpdateReturnValue.None)
+        public Task<DynamoDBMap> UpdateAsync(DynamoDBKeyValue partitionKey, DynamoDBUpdateExpression updateExpression, DynamoDBUpdateReturnValue returnValue = DynamoDBUpdateReturnValue.None)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<DynamoDBMap> UpdateAsync(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey, DynamoDBUpdateExpression updateExpression, DynamoDBUpdateReturnValue returnValue = DynamoDBUpdateReturnValue.None)
+        public Task<DynamoDBMap> UpdateAsync(DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey, DynamoDBUpdateExpression updateExpression, DynamoDBUpdateReturnValue returnValue = DynamoDBUpdateReturnValue.None)
         {
             throw new System.NotImplementedException();
         }

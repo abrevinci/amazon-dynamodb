@@ -27,7 +27,7 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.Core.MockDynamoDBClientTests.PutAs
         }
 
         [Fact]
-        public void ShouldThrowWhenHashKeyDoesNotExistInItem()
+        public void ShouldThrowWhenPartitionKeyDoesNotExistInItem()
         {
             // Arrange
             var client = new MockDynamoDBClient
@@ -47,7 +47,7 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.Core.MockDynamoDBClientTests.PutAs
         }
         
         [Fact]
-        public void ShouldThrowWhenRangeKeyDoesNotExistInItem()
+        public void ShouldThrowWhenSortKeyDoesNotExistInItem()
         {
             // Arrange
             var client = new MockDynamoDBClient

@@ -26,11 +26,11 @@ namespace AbreVinci.Amazon.DynamoDB.Table
         /// </example>
         Task<DynamoDBMap> PutAsync(DynamoDBMap item, bool returnOldItem = false);
 
-        Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue hashKey, bool returnDeletedItem = false);
-        Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey, bool returnDeletedItem = false);
+        Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue partitionKey, bool returnDeletedItem = false);
+        Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey, bool returnDeletedItem = false);
 
-        Task<DynamoDBMap> UpdateAsync(DynamoDBKeyValue hashKey, DynamoDBUpdateExpression updateExpression, DynamoDBUpdateReturnValue returnValue = DynamoDBUpdateReturnValue.None);
-        Task<DynamoDBMap> UpdateAsync(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey, DynamoDBUpdateExpression updateExpression, DynamoDBUpdateReturnValue returnValue = DynamoDBUpdateReturnValue.None);
+        Task<DynamoDBMap> UpdateAsync(DynamoDBKeyValue partitionKey, DynamoDBUpdateExpression updateExpression, DynamoDBUpdateReturnValue returnValue = DynamoDBUpdateReturnValue.None);
+        Task<DynamoDBMap> UpdateAsync(DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey, DynamoDBUpdateExpression updateExpression, DynamoDBUpdateReturnValue returnValue = DynamoDBUpdateReturnValue.None);
 
         IDynamoDBTableBatchWriteSyntax BatchWrite();
     }
