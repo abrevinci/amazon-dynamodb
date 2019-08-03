@@ -12,6 +12,18 @@ namespace AbreVinci.Amazon.DynamoDB.Table
     [PublicAPI]
     public interface IDynamoDBTableWriteSyntax
     {
+        /// <summary>
+        /// Saves the given item.
+        /// </summary>
+        /// <param name="item">The item to save.</param>
+        /// <param name="returnOldItem">Whether or not to return the old item as it was stored before the put (if it existed).</param>
+        /// <returns>An awaitable task that resolves to the old item if requested and it existed, or null otherwise.</returns>
+        /// <example>
+        /// <code>
+        /// await table.PutAsync(item1);
+        /// var oldItem = await table.PutAsync(item2, true);
+        /// </code>
+        /// </example>
         Task<DynamoDBMap> PutAsync(DynamoDBMap item, bool returnOldItem = false);
 
         Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue hashKey, bool returnDeletedItem = false);

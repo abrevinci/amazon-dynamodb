@@ -123,7 +123,7 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table
 
         public Task<DynamoDBMap> PutAsync(DynamoDBMap item, bool returnOldItem = false)
         {
-            throw new System.NotImplementedException();
+            return new DynamoDBTableWriteContext(_client, this).PutAsync(item, returnOldItem);
         }
 
         public Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue hashKey, bool returnDeletedItem = false)

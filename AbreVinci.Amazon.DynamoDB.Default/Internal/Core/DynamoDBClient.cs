@@ -56,6 +56,20 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Core
             return response.IsItemSet ? response.Item.ToMap() : null;
         }
 
+        public async Task<DynamoDBMap> PutAsync(DynamoDBTablePutRequest request)
+        {
+            var awsRequest = new PutItemRequest
+            {
+                TableName = request.TableName,
+                Item = request.Item.ToAwsDictionary(),
+                ReturnValues = request.ReturnOldItem ? ReturnValue.ALL_OLD : ReturnValue.NONE
+            };
+
+            var response = await _awsClient.PutItemAsync(awsRequest);
+
+            return request.ReturnOldItem && response.Attributes != null && response.Attributes.Any() ? response.Attributes.ToMap() : null;
+        }
+
         #endregion
 
         #region Private

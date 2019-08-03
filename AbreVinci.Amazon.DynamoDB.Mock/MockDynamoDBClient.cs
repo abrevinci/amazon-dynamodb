@@ -51,6 +51,26 @@ namespace AbreVinci.Amazon.DynamoDB.Mock
             return Task.FromResult(item);
         }
 
+        public Task<DynamoDBMap> PutAsync(DynamoDBTablePutRequest request)
+        {
+            if (!Tables.TryGetValue(request.TableName, out var content))
+                throw new Exception("Table not found");
+            
+            if (!request.Item.TryGetValue(content.HashKeyAttribute.ToString(), out var hashKey))
+                throw new Exception("Hash key not set.");
+
+            DynamoDBValue rangeKey = null;
+            if (content.RangeKeyAttribute != null && !request.Item.TryGetValue(content.RangeKeyAttribute.ToString(), out rangeKey))
+                throw new Exception("Range key not set.");
+            
+            var item = content.Items.FirstOrDefault(i => MatchesKey(i, content.HashKeyAttribute, (DynamoDBKeyValue)hashKey, content.RangeKeyAttribute, (DynamoDBKeyValue)rangeKey));
+
+            content.Items.Remove(item);
+            content.Items.Add(request.Item);
+            
+            return Task.FromResult(request.ReturnOldItem ? item : null);
+        }
+
         #endregion
 
         #region Private

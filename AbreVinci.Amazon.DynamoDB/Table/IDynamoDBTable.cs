@@ -23,6 +23,11 @@ namespace AbreVinci.Amazon.DynamoDB.Table
         /// Turns on consistent read for consecutive read operations.
         /// </summary>
         /// <returns>A continuation context that allows setting up and executing per-table non-transaction read requests (now with consistent read enabled).</returns>
+        /// <example>
+        /// <code>
+        /// var item = await table.UseConsistentRead().GetAsync(hashKey);
+        /// </code>
+        /// </example>
         IDynamoDBTableReadSyntax UseConsistentRead();
 
         IDynamoDBTableConditionalWriteSyntax If(DynamoDBPredicateExpression predicateExpression);

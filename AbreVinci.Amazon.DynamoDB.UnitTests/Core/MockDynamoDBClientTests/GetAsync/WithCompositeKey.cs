@@ -34,7 +34,7 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.Core.MockDynamoDBClientTests.GetAs
             {
                 Tables =
                 {
-                    ["MyTable"] = new MockDynamoDBTableContent()
+                    ["MyTable"] = new MockDynamoDBTableContent("id", "sort")
                 }
             };
             var request = new DynamoDBTableGetRequest("MyTable", "id", 1, "sort", 2, false, null);
@@ -54,7 +54,7 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.Core.MockDynamoDBClientTests.GetAs
             {
                 Tables =
                 {
-                    ["MyTable"] = new MockDynamoDBTableContent
+                    ["MyTable"] = new MockDynamoDBTableContent("id", "sort")
                     {
                         ConsistentReadOnlyItems =
                         {
@@ -85,7 +85,7 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.Core.MockDynamoDBClientTests.GetAs
             {
                 Tables =
                 {
-                    ["MyTable"] = new MockDynamoDBTableContent
+                    ["MyTable"] = new MockDynamoDBTableContent("id", "sort")
                     {
                         Items =
                         {
