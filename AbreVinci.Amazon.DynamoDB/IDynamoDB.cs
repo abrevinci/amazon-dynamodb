@@ -26,7 +26,7 @@ namespace AbreVinci.Amazon.DynamoDB
         /// <returns>A table interface which can be used to perform per-table operations.</returns>
         /// <example>
         /// <code>
-        /// var tableDescription = new DynamoDBTableDescription("MyTable", "id);
+        /// var tableDescription = new DynamoDBTableDescription("MyTable", "id");
         /// var table = dynamoDB.AccessTable(tableDescription);
         /// </code>
         /// </example>

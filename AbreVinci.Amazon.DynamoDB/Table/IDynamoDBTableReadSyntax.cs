@@ -20,6 +20,11 @@ namespace AbreVinci.Amazon.DynamoDB.Table
         /// </summary>
         /// <param name="attributes">The attributes to project.</param>
         /// <returns>A continuation context that allows setting up and executing per-table non-transaction read requests (now with the selected projection).</returns>
+        /// <example>
+        /// <code>
+        /// var item = await table.IncludeAttributes("id", "value").GetAsync(hashKey);
+        /// </code>
+        /// </example>
         IDynamoDBTableReadSyntax IncludeAttributes(params DynamoDBAttributePath[] attributes);
 
         /// <see cref="IncludeAttributes(DynamoDBAttributePath[])"/>
@@ -31,6 +36,11 @@ namespace AbreVinci.Amazon.DynamoDB.Table
         /// <param name="hashKey">The hash key to look for.</param>
         /// <returns>An awaitable task that resolves to the retrieved item, or null if it is not found.</returns>
         /// <seealso cref="GetAsync(DynamoDBKeyValue, DynamoDBKeyValue)"/>
+        /// <example>
+        /// <code>
+        /// var item = await table.GetAsync(hashKey);
+        /// </code>
+        /// </example>
         Task<DynamoDBMap> GetAsync(DynamoDBKeyValue hashKey);
 
         /// <summary>
@@ -40,6 +50,11 @@ namespace AbreVinci.Amazon.DynamoDB.Table
         /// <param name="rangeKey">The range key to look for.</param>
         /// <returns>An awaitable task that resolves to the retrieved item, or null if it is not found.</returns>
         /// <seealso cref="GetAsync(DynamoDBKeyValue)"/>
+        /// <example>
+        /// <code>
+        /// var item = await table.GetAsync(hashKey, rangeKey);
+        /// </code>
+        /// </example>
         Task<DynamoDBMap> GetAsync(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey);
 
         IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue hashKey);

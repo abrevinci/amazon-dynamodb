@@ -71,7 +71,7 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Core
             return new MemoryStream(value.AsByteArray());
         }
 
-        private static Dictionary<string, AttributeValue> ToAwsDictionary(this DynamoDBMap value)
+        public static Dictionary<string, AttributeValue> ToAwsDictionary(this DynamoDBMap value)
         {
             return value.ToDictionary(e => e.Key, e => e.Value.ToAwsValue());
         }

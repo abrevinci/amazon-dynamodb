@@ -20,7 +20,7 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.Core.MockDynamoDBClientTests.GetAs
             {
                 Tables =
                 {
-                    ["MyTable"] = new MockDynamoDBTableContent
+                    ["MyTable"] = new MockDynamoDBTableContent("id")
                     {
                         Items =
                         {
