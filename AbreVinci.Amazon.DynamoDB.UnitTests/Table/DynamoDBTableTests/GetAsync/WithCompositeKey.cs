@@ -76,10 +76,10 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.Table.DynamoDBTableTests.GetAsync
             // Assert
             request.Should().NotBeNull();
             request.TableName.Should().Be("MyTable");
-            request.HashKeyAttribute.Should().Be("id");
-            request.HashKey.Should().Be((DynamoDBNumber)1);
-            request.RangeKeyAttribute.Should().Be("sort");
-            request.RangeKey.Should().Be((DynamoDBNumber)2);
+            request.PartitionKeyAttribute.Should().Be("id");
+            request.PartitionKey.Should().Be((DynamoDBNumber)1);
+            request.SortKeyAttribute.Should().Be("sort");
+            request.SortKey.Should().Be((DynamoDBNumber)2);
             request.UseConsistentRead.Should().BeFalse();
             request.ProjectedAttributes.Should().BeNull();
         }

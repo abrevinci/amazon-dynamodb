@@ -52,24 +52,24 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table
             return new DynamoDBTableReadContext(_client, _table, _useConsistentRead, newProjection);
         }
 
-        public Task<DynamoDBMap> GetAsync(DynamoDBKeyValue hashKey)
+        public Task<DynamoDBMap> GetAsync(DynamoDBKeyValue partitionKey)
         {
-            var request = new DynamoDBTableGetRequest(_table.Name, _table.HashKeyAttribute, hashKey, _useConsistentRead, _projection);
+            var request = new DynamoDBTableGetRequest(_table.Name, _table.PartitionKeyAttribute, partitionKey, _useConsistentRead, _projection);
             return _client.GetAsync(request);
         }
 
-        public Task<DynamoDBMap> GetAsync(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey)
+        public Task<DynamoDBMap> GetAsync(DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey)
         {
-            var request = new DynamoDBTableGetRequest(_table.Name, _table.HashKeyAttribute, hashKey, _table.RangeKeyAttribute, rangeKey, _useConsistentRead, _projection);
+            var request = new DynamoDBTableGetRequest(_table.Name, _table.PartitionKeyAttribute, partitionKey, _table.SortKeyAttribute, sortKey, _useConsistentRead, _projection);
             return _client.GetAsync(request);
         }
 
-        public IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue hashKey)
+        public IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue partitionKey)
         {
             throw new System.NotImplementedException();
         }
 
-        public IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue hashKey, DynamoDBKeyConditionExpression keyConditionExpression)
+        public IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue partitionKey, DynamoDBKeyConditionExpression keyConditionExpression)
         {
             throw new System.NotImplementedException();
         }

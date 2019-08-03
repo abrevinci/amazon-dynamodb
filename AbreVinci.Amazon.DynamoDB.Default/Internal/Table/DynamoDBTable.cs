@@ -49,8 +49,8 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table
         #region IDynamoDBTable
 
         public string Name => _tableDescription.Name;
-        public DynamoDBAttributePath HashKeyAttribute => _tableDescription.HashKeyAttribute;
-        public DynamoDBAttributePath RangeKeyAttribute => _tableDescription.RangeKeyAttribute;
+        public DynamoDBAttributePath PartitionKeyAttribute => _tableDescription.PartitionKeyAttribute;
+        public DynamoDBAttributePath SortKeyAttribute => _tableDescription.SortKeyAttribute;
         public IReadOnlyDictionary<string, IDynamoDBIndex> Indexes { get; }
 
         public IDynamoDBTableReadSyntax UseConsistentRead()
@@ -87,22 +87,22 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table
             return new DynamoDBTableReadContext(_client, this, false, attributes);
         }
 
-        public Task<DynamoDBMap> GetAsync(DynamoDBKeyValue hashKey)
+        public Task<DynamoDBMap> GetAsync(DynamoDBKeyValue partitionKey)
         {
-            return new DynamoDBTableReadContext(_client, this, false, null).GetAsync(hashKey);
+            return new DynamoDBTableReadContext(_client, this, false, null).GetAsync(partitionKey);
         }
 
-        public Task<DynamoDBMap> GetAsync(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey)
+        public Task<DynamoDBMap> GetAsync(DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey)
         {
-            return new DynamoDBTableReadContext(_client, this, false, null).GetAsync(hashKey, rangeKey);
+            return new DynamoDBTableReadContext(_client, this, false, null).GetAsync(partitionKey, sortKey);
         }
 
-        public IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue hashKey)
+        public IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue partitionKey)
         {
             throw new System.NotImplementedException();
         }
 
-        public IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue hashKey, DynamoDBKeyConditionExpression keyConditionExpression)
+        public IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue partitionKey, DynamoDBKeyConditionExpression keyConditionExpression)
         {
             throw new System.NotImplementedException();
         }
@@ -126,22 +126,22 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table
             return new DynamoDBTableWriteContext(_client, this).PutAsync(item, returnOldItem);
         }
 
-        public Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue hashKey, bool returnDeletedItem = false)
+        public Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue partitionKey, bool returnDeletedItem = false)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey, bool returnDeletedItem = false)
+        public Task<DynamoDBMap> DeleteAsync(DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey, bool returnDeletedItem = false)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<DynamoDBMap> UpdateAsync(DynamoDBKeyValue hashKey, DynamoDBUpdateExpression updateExpression, DynamoDBUpdateReturnValue returnValue = DynamoDBUpdateReturnValue.None)
+        public Task<DynamoDBMap> UpdateAsync(DynamoDBKeyValue partitionKey, DynamoDBUpdateExpression updateExpression, DynamoDBUpdateReturnValue returnValue = DynamoDBUpdateReturnValue.None)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<DynamoDBMap> UpdateAsync(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey, DynamoDBUpdateExpression updateExpression, DynamoDBUpdateReturnValue returnValue = DynamoDBUpdateReturnValue.None)
+        public Task<DynamoDBMap> UpdateAsync(DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey, DynamoDBUpdateExpression updateExpression, DynamoDBUpdateReturnValue returnValue = DynamoDBUpdateReturnValue.None)
         {
             throw new System.NotImplementedException();
         }

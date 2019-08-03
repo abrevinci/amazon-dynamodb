@@ -9,8 +9,8 @@ namespace AbreVinci.Amazon.DynamoDB.Table.Index
     public interface IDynamoDBIndex : IDynamoDBIndexReadSyntax
     {
         string Name { get; }
-        DynamoDBAttributePath HashKeyAttribute { get; }
-        DynamoDBAttributePath RangeKeyAttribute { get; }
+        DynamoDBAttributePath PartitionKeyAttribute { get; }
+        DynamoDBAttributePath SortKeyAttribute { get; }
 
         IDynamoDBIndexReadSyntax UseConsistentRead();
     }

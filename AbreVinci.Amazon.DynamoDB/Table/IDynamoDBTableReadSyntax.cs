@@ -22,7 +22,7 @@ namespace AbreVinci.Amazon.DynamoDB.Table
         /// <returns>A continuation context that allows setting up and executing per-table non-transaction read requests (now with the selected projection).</returns>
         /// <example>
         /// <code>
-        /// var item = await table.IncludeAttributes("id", "value").GetAsync(hashKey);
+        /// var item = await table.IncludeAttributes("id", "value").GetAsync(partitionKey);
         /// </code>
         /// </example>
         IDynamoDBTableReadSyntax IncludeAttributes(params DynamoDBAttributePath[] attributes);
@@ -31,34 +31,34 @@ namespace AbreVinci.Amazon.DynamoDB.Table
         IDynamoDBTableReadSyntax IncludeAttributes(IEnumerable<DynamoDBAttributePath> attributes);
 
         /// <summary>
-        /// Gets the item with the given hash key.
+        /// Gets the item with the given partition key.
         /// </summary>
-        /// <param name="hashKey">The hash key to look for.</param>
+        /// <param name="partitionKey">The partition key to look for.</param>
         /// <returns>An awaitable task that resolves to the retrieved item, or null if it is not found.</returns>
         /// <seealso cref="GetAsync(DynamoDBKeyValue, DynamoDBKeyValue)"/>
         /// <example>
         /// <code>
-        /// var item = await table.GetAsync(hashKey);
+        /// var item = await table.GetAsync(partitionKey);
         /// </code>
         /// </example>
-        Task<DynamoDBMap> GetAsync(DynamoDBKeyValue hashKey);
+        Task<DynamoDBMap> GetAsync(DynamoDBKeyValue partitionKey);
 
         /// <summary>
-        /// Gets the item with the given composite (hash+range) key.
+        /// Gets the item with the given composite (partition+sort) key.
         /// </summary>
-        /// <param name="hashKey">The hash key to look for.</param>
-        /// <param name="rangeKey">The range key to look for.</param>
+        /// <param name="partitionKey">The partition key to look for.</param>
+        /// <param name="sortKey">The sort key to look for.</param>
         /// <returns>An awaitable task that resolves to the retrieved item, or null if it is not found.</returns>
         /// <seealso cref="GetAsync(DynamoDBKeyValue)"/>
         /// <example>
         /// <code>
-        /// var item = await table.GetAsync(hashKey, rangeKey);
+        /// var item = await table.GetAsync(partitionKey, sortKey);
         /// </code>
         /// </example>
-        Task<DynamoDBMap> GetAsync(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey);
+        Task<DynamoDBMap> GetAsync(DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey);
 
-        IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue hashKey);
-        IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue hashKey, DynamoDBKeyConditionExpression keyConditionExpression);
+        IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue partitionKey);
+        IDynamoDBTableQuerySyntax Query(DynamoDBKeyValue partitionKey, DynamoDBKeyConditionExpression keyConditionExpression);
 
         IDynamoDBTableScanSyntax Scan();
 

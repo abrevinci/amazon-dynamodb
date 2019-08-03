@@ -15,12 +15,12 @@ using Xunit;
 
 namespace AbreVinci.Amazon.DynamoDB.UnitTests.Core.DynamoDBClientTests.GetAsync
 {
-    public class WithHashKey
+    public class WithPartitionKey
     {
         private readonly Mock<IAmazonDynamoDB> _awsClient;
         private readonly IDynamoDBClient _client;
 
-        public WithHashKey()
+        public WithPartitionKey()
         {
             _awsClient = new Mock<IAmazonDynamoDB>();
             _client = new DynamoDBClient(_awsClient.Object, null);

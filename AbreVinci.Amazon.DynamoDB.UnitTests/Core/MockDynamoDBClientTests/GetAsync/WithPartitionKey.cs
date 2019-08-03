@@ -10,7 +10,7 @@ using Xunit;
 
 namespace AbreVinci.Amazon.DynamoDB.UnitTests.Core.MockDynamoDBClientTests.GetAsync
 {
-    public class WithHashKey
+    public class WithPartitionKey
     {
         [Fact]
         public void ShouldThrowWhenTableDoesNotExist()

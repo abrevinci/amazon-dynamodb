@@ -14,11 +14,11 @@ namespace AbreVinci.Amazon.DynamoDB.BatchRead
         IDynamoDBBatchReadSyntax IncludeAttributes(IDynamoDBTable table, params DynamoDBAttributePath[] attributes);
         IDynamoDBBatchReadSyntax IncludeAttributes(IDynamoDBTable table, IEnumerable<DynamoDBAttributePath> attributes);
         
-        IDynamoDBBatchReadTerminationSyntax Get(IDynamoDBTable table, DynamoDBKeyValue hashKey);
-        IDynamoDBBatchReadTerminationSyntax Get(IDynamoDBTable table, DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey);
-        IDynamoDBBatchReadTerminationSyntax Get(IDynamoDBTable table, params DynamoDBKeyValue[] hashKeys);
-        IDynamoDBBatchReadTerminationSyntax Get(IDynamoDBTable table, IEnumerable<DynamoDBKeyValue> hashKeys);
-        IDynamoDBBatchReadTerminationSyntax Get(IDynamoDBTable table, params (DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey)[] compositeKeys);
-        IDynamoDBBatchReadTerminationSyntax Get(IDynamoDBTable table, IEnumerable<(DynamoDBKeyValue hashKey, DynamoDBKeyValue rangeKey)> compositeKeys);
+        IDynamoDBBatchReadTerminationSyntax Get(IDynamoDBTable table, DynamoDBKeyValue partitionKey);
+        IDynamoDBBatchReadTerminationSyntax Get(IDynamoDBTable table, DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey);
+        IDynamoDBBatchReadTerminationSyntax Get(IDynamoDBTable table, params DynamoDBKeyValue[] partitionKeys);
+        IDynamoDBBatchReadTerminationSyntax Get(IDynamoDBTable table, IEnumerable<DynamoDBKeyValue> partitionKeys);
+        IDynamoDBBatchReadTerminationSyntax Get(IDynamoDBTable table, params (DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey)[] compositeKeys);
+        IDynamoDBBatchReadTerminationSyntax Get(IDynamoDBTable table, IEnumerable<(DynamoDBKeyValue partitionKey, DynamoDBKeyValue sortKey)> compositeKeys);
     }
 }

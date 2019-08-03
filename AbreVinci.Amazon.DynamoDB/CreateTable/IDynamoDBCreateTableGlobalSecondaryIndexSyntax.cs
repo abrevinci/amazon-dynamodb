@@ -9,7 +9,7 @@ namespace AbreVinci.Amazon.DynamoDB.CreateTable
     [PublicAPI]
     public interface IDynamoDBCreateTableGlobalSecondaryIndexSyntax
     {
-        IDynamoDBCreateTableGlobalSecondaryIndexKeySelectedSyntax WithKey<THashKey>(DynamoDBAttributePath hashKeyAttribute) where THashKey : DynamoDBKeyValue;
-        IDynamoDBCreateTableGlobalSecondaryIndexKeySelectedSyntax WithKey<THashKey, TRangeKey>(DynamoDBAttributePath hashKeyAttribute, DynamoDBAttributePath rangeKeyAttribute) where THashKey : DynamoDBKeyValue where TRangeKey : DynamoDBKeyValue;
+        IDynamoDBCreateTableGlobalSecondaryIndexKeySelectedSyntax WithKey<TPartitionKey>(DynamoDBAttributePath partitionKeyAttribute) where TPartitionKey : DynamoDBKeyValue;
+        IDynamoDBCreateTableGlobalSecondaryIndexKeySelectedSyntax WithKey<TPartitionKey, TSortKey>(DynamoDBAttributePath partitionKeyAttribute, DynamoDBAttributePath sortKeyAttribute) where TPartitionKey : DynamoDBKeyValue where TSortKey : DynamoDBKeyValue;
     }
 }

@@ -12,12 +12,12 @@ using Xunit;
 
 namespace AbreVinci.Amazon.DynamoDB.UnitTests.Table.DynamoDBTableTests.GetAsync
 {
-    public class WithHashKey
+    public class WithPartitionKey
     {
         private readonly Mock<IDynamoDBClient> _client;
         private readonly IDynamoDBTable _table;
 
-        public WithHashKey()
+        public WithPartitionKey()
         {
             _client = new Mock<IDynamoDBClient>();
             var tableDescription = new DynamoDBTableDescription("MyTable", "id");
@@ -76,10 +76,10 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.Table.DynamoDBTableTests.GetAsync
             // Assert
             request.Should().NotBeNull();
             request.TableName.Should().Be("MyTable");
-            request.HashKeyAttribute.Should().Be("id");
-            request.HashKey.Should().Be((DynamoDBNumber)1);
-            request.RangeKeyAttribute.Should().BeNull();
-            request.RangeKey.Should().BeNull();
+            request.PartitionKeyAttribute.Should().Be("id");
+            request.PartitionKey.Should().Be((DynamoDBNumber)1);
+            request.SortKeyAttribute.Should().BeNull();
+            request.SortKey.Should().BeNull();
             request.UseConsistentRead.Should().BeFalse();
             request.ProjectedAttributes.Should().BeNull();
         }

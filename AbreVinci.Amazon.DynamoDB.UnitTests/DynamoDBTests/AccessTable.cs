@@ -29,8 +29,8 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.DynamoDBTests
 
             // Assert
             table.Name.Should().Be("MyTable");
-            table.HashKeyAttribute.ToString().Should().Be("id");
-            table.RangeKeyAttribute.Should().BeNull();
+            table.PartitionKeyAttribute.ToString().Should().Be("id");
+            table.SortKeyAttribute.Should().BeNull();
             table.Indexes.Should().BeEmpty();
         }
 
@@ -47,17 +47,17 @@ namespace AbreVinci.Amazon.DynamoDB.UnitTests.DynamoDBTests
 
             // Assert
             table.Name.Should().Be("MyTable");
-            table.HashKeyAttribute.ToString().Should().Be("key1");
-            table.RangeKeyAttribute.ToString().Should().Be("key2");
+            table.PartitionKeyAttribute.ToString().Should().Be("key1");
+            table.SortKeyAttribute.ToString().Should().Be("key2");
             table.Indexes.Should().HaveCount(2);
             table.Indexes.TryGetValue("Index1", out var index1).Should().BeTrue();
             table.Indexes.TryGetValue("Index2", out var index2).Should().BeTrue();
             index1.Name.Should().Be("Index1");
-            index1.HashKeyAttribute.ToString().Should().Be("key3");
-            index1.RangeKeyAttribute.Should().BeNull();
+            index1.PartitionKeyAttribute.ToString().Should().Be("key3");
+            index1.SortKeyAttribute.Should().BeNull();
             index2.Name.Should().Be("Index2");
-            index2.HashKeyAttribute.ToString().Should().Be("key2");
-            index2.RangeKeyAttribute.ToString().Should().Be("key3");
+            index2.PartitionKeyAttribute.ToString().Should().Be("key2");
+            index2.SortKeyAttribute.ToString().Should().Be("key3");
         }
     }
 }

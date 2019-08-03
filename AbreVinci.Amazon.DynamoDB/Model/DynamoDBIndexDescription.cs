@@ -7,16 +7,16 @@ namespace AbreVinci.Amazon.DynamoDB.Model
     [PublicAPI]
     public class DynamoDBIndexDescription
     {
-        public DynamoDBIndexDescription(string name, DynamoDBAttributePath hashKeyAttribute, DynamoDBAttributePath rangeKeyAttribute = null)
+        public DynamoDBIndexDescription(string name, DynamoDBAttributePath partitionKeyAttribute, DynamoDBAttributePath sortKeyAttribute = null)
         {
             Name = name;
-            HashKeyAttribute = hashKeyAttribute;
-            RangeKeyAttribute = rangeKeyAttribute;
+            PartitionKeyAttribute = partitionKeyAttribute;
+            SortKeyAttribute = sortKeyAttribute;
         }
 
         public string Name { get; }
         public bool IsLocal { get; }
-        public DynamoDBAttributePath HashKeyAttribute { get; }
-        public DynamoDBAttributePath RangeKeyAttribute { get; }
+        public DynamoDBAttributePath PartitionKeyAttribute { get; }
+        public DynamoDBAttributePath SortKeyAttribute { get; }
     }
 }

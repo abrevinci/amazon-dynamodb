@@ -9,7 +9,7 @@ namespace AbreVinci.Amazon.DynamoDB.CreateTable
     [PublicAPI]
     public interface IDynamoDBCreateTableSyntax
     {
-        IDynamoDBCreateTableKeySelectedSyntax WithKey<THashKey>(DynamoDBAttributePath hashKeyAttribute) where THashKey : DynamoDBKeyValue;
-        IDynamoDBCreateTableKeySelectedSyntax WithKey<THashKey, TRangeKey>(DynamoDBAttributePath hashKeyAttribute, DynamoDBAttributePath rangeKeyAttribute) where THashKey : DynamoDBKeyValue where TRangeKey : DynamoDBKeyValue;
+        IDynamoDBCreateTableKeySelectedSyntax WithKey<TPartitionKey>(DynamoDBAttributePath partitionKeyAttribute) where TPartitionKey : DynamoDBKeyValue;
+        IDynamoDBCreateTableKeySelectedSyntax WithKey<TPartitionKey, TSortKey>(DynamoDBAttributePath partitionKeyAttribute, DynamoDBAttributePath sortKeyAttribute) where TPartitionKey : DynamoDBKeyValue where TSortKey : DynamoDBKeyValue;
     }
 }

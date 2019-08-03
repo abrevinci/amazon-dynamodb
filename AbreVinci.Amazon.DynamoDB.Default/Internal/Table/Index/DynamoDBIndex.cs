@@ -34,8 +34,8 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table.Index
         #region IDynamoDBIndex
 
         public string Name => _indexDescription.Name;
-        public DynamoDBAttributePath HashKeyAttribute => _indexDescription.HashKeyAttribute;
-        public DynamoDBAttributePath RangeKeyAttribute => _indexDescription.RangeKeyAttribute;
+        public DynamoDBAttributePath PartitionKeyAttribute => _indexDescription.PartitionKeyAttribute;
+        public DynamoDBAttributePath SortKeyAttribute => _indexDescription.SortKeyAttribute;
 
         public IDynamoDBIndexReadSyntax UseConsistentRead()
         {
@@ -56,12 +56,12 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Table.Index
             throw new System.NotImplementedException();
         }
 
-        public IDynamoDBIndexQuerySyntax Query(DynamoDBKeyValue hashKey)
+        public IDynamoDBIndexQuerySyntax Query(DynamoDBKeyValue partitionKey)
         {
             throw new System.NotImplementedException();
         }
 
-        public IDynamoDBIndexQuerySyntax Query(DynamoDBKeyValue hashKey, DynamoDBKeyConditionExpression keyConditionExpression)
+        public IDynamoDBIndexQuerySyntax Query(DynamoDBKeyValue partitionKey, DynamoDBKeyConditionExpression keyConditionExpression)
         {
             throw new System.NotImplementedException();
         }

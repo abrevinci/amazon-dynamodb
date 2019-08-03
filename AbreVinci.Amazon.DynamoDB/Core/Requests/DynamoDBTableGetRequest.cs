@@ -16,43 +16,43 @@ namespace AbreVinci.Amazon.DynamoDB.Core.Requests
     {
         public DynamoDBTableGetRequest(
             string tableName,
-            DynamoDBAttributePath hashKeyAttribute,
-            DynamoDBKeyValue hashKey,
+            DynamoDBAttributePath partitionKeyAttribute,
+            DynamoDBKeyValue partitionKey,
             bool useConsistentRead,
             IEnumerable<DynamoDBAttributePath> projectedAttributes)
         {
             TableName = tableName;
-            HashKeyAttribute = hashKeyAttribute;
-            HashKey = hashKey;
-            RangeKeyAttribute = null;
-            RangeKey = null;
+            PartitionKeyAttribute = partitionKeyAttribute;
+            PartitionKey = partitionKey;
+            SortKeyAttribute = null;
+            SortKey = null;
             UseConsistentRead = useConsistentRead;
             ProjectedAttributes = projectedAttributes?.ToList();
         }
 
         public DynamoDBTableGetRequest(
             string tableName,
-            DynamoDBAttributePath hashKeyAttribute,
-            DynamoDBKeyValue hashKey,
-            DynamoDBAttributePath rangeKeyAttribute,
-            DynamoDBKeyValue rangeKey,
+            DynamoDBAttributePath partitionKeyAttribute,
+            DynamoDBKeyValue partitionKey,
+            DynamoDBAttributePath sortKeyAttribute,
+            DynamoDBKeyValue sortKey,
             bool useConsistentRead,
             IEnumerable<DynamoDBAttributePath> projectedAttributes)
         {
             TableName = tableName;
-            HashKeyAttribute = hashKeyAttribute;
-            HashKey = hashKey;
-            RangeKeyAttribute = rangeKeyAttribute;
-            RangeKey = rangeKey;
+            PartitionKeyAttribute = partitionKeyAttribute;
+            PartitionKey = partitionKey;
+            SortKeyAttribute = sortKeyAttribute;
+            SortKey = sortKey;
             UseConsistentRead = useConsistentRead;
             ProjectedAttributes = projectedAttributes?.ToList();
         }
 
         public string TableName { get; }
-        public DynamoDBAttributePath HashKeyAttribute { get; }
-        public DynamoDBKeyValue HashKey { get; }
-        public DynamoDBAttributePath RangeKeyAttribute { get; }
-        public DynamoDBKeyValue RangeKey { get; }
+        public DynamoDBAttributePath PartitionKeyAttribute { get; }
+        public DynamoDBKeyValue PartitionKey { get; }
+        public DynamoDBAttributePath SortKeyAttribute { get; }
+        public DynamoDBKeyValue SortKey { get; }
         public bool UseConsistentRead { get; }
         public IReadOnlyList<DynamoDBAttributePath> ProjectedAttributes { get; }
     }

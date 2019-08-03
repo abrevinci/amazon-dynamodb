@@ -42,7 +42,7 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Core
             {
                 TableName = request.TableName,
                 ConsistentRead = request.UseConsistentRead,
-                Key = MakeAwsKey(request.HashKeyAttribute, request.HashKey, request.RangeKeyAttribute, request.RangeKey),
+                Key = MakeAwsKey(request.PartitionKeyAttribute, request.PartitionKey, request.SortKeyAttribute, request.SortKey),
             };
 
             if (request.ProjectedAttributes != null && request.ProjectedAttributes.Any())
@@ -75,18 +75,18 @@ namespace AbreVinci.Amazon.DynamoDB.Default.Internal.Core
         #region Private
 
         private static Dictionary<string, AttributeValue> MakeAwsKey(
-            DynamoDBAttributePath hashKeyAttribute,
-            DynamoDBKeyValue hashKey,
-            DynamoDBAttributePath rangeKeyAttribute,
-            DynamoDBKeyValue rangeKey)
+            DynamoDBAttributePath partitionKeyAttribute,
+            DynamoDBKeyValue partitionKey,
+            DynamoDBAttributePath sortKeyAttribute,
+            DynamoDBKeyValue sortKey)
         {
             var key = new Dictionary<string, AttributeValue>
             {
-                [hashKeyAttribute.ToString()] = hashKey.ToAwsValue()
+                [partitionKeyAttribute.ToString()] = partitionKey.ToAwsValue()
             };
 
-            if (rangeKeyAttribute != null && rangeKey != null)
-                key[rangeKeyAttribute.ToString()] = rangeKey.ToAwsValue();
+            if (sortKeyAttribute != null && sortKey != null)
+                key[sortKeyAttribute.ToString()] = sortKey.ToAwsValue();
 
             return key;
         }

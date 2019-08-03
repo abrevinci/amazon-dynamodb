@@ -28,10 +28,10 @@ namespace AbreVinci.Amazon.DynamoDB.Mock
             if (!Tables.TryGetValue(request.TableName, out var content))
                 throw new Exception("Table not found");
 
-            var item = content.Items.FirstOrDefault(i => MatchesKey(i, request.HashKeyAttribute, request.HashKey, request.RangeKeyAttribute, request.RangeKey));
+            var item = content.Items.FirstOrDefault(i => MatchesKey(i, request.PartitionKeyAttribute, request.PartitionKey, request.SortKeyAttribute, request.SortKey));
 
             if (item == null && request.UseConsistentRead)
-                item = content.ConsistentReadOnlyItems.FirstOrDefault(i => MatchesKey(i, request.HashKeyAttribute, request.HashKey, request.RangeKeyAttribute, request.RangeKey));
+                item = content.ConsistentReadOnlyItems.FirstOrDefault(i => MatchesKey(i, request.PartitionKeyAttribute, request.PartitionKey, request.SortKeyAttribute, request.SortKey));
 
             if (item != null && request.ProjectedAttributes != null && request.ProjectedAttributes.Any())
             {
@@ -56,14 +56,14 @@ namespace AbreVinci.Amazon.DynamoDB.Mock
             if (!Tables.TryGetValue(request.TableName, out var content))
                 throw new Exception("Table not found");
             
-            if (!request.Item.TryGetValue(content.HashKeyAttribute.ToString(), out var hashKey))
-                throw new Exception("Hash key not set.");
+            if (!request.Item.TryGetValue(content.PartitionKeyAttribute.ToString(), out var partitionKey))
+                throw new Exception("Partition key not set.");
 
-            DynamoDBValue rangeKey = null;
-            if (content.RangeKeyAttribute != null && !request.Item.TryGetValue(content.RangeKeyAttribute.ToString(), out rangeKey))
-                throw new Exception("Range key not set.");
+            DynamoDBValue sortKey = null;
+            if (content.SortKeyAttribute != null && !request.Item.TryGetValue(content.SortKeyAttribute.ToString(), out sortKey))
+                throw new Exception("Sort key not set.");
             
-            var item = content.Items.FirstOrDefault(i => MatchesKey(i, content.HashKeyAttribute, (DynamoDBKeyValue)hashKey, content.RangeKeyAttribute, (DynamoDBKeyValue)rangeKey));
+            var item = content.Items.FirstOrDefault(i => MatchesKey(i, content.PartitionKeyAttribute, (DynamoDBKeyValue)partitionKey, content.SortKeyAttribute, (DynamoDBKeyValue)sortKey));
 
             content.Items.Remove(item);
             content.Items.Add(request.Item);
@@ -77,17 +77,17 @@ namespace AbreVinci.Amazon.DynamoDB.Mock
 
         public bool MatchesKey(
             DynamoDBMap item,
-            DynamoDBAttributePath hashKeyAttribute,
-            DynamoDBKeyValue hashKey,
-            DynamoDBAttributePath rangeKeyAttribute,
-            DynamoDBKeyValue rangeKey)
+            DynamoDBAttributePath partitionKeyAttribute,
+            DynamoDBKeyValue partitionKey,
+            DynamoDBAttributePath sortKeyAttribute,
+            DynamoDBKeyValue sortKey)
         {
-            if (!item.TryGetValue(hashKeyAttribute.ToString(), out var h) || (DynamoDBKeyValue)h != hashKey)
+            if (!item.TryGetValue(partitionKeyAttribute.ToString(), out var h) || (DynamoDBKeyValue)h != partitionKey)
                 return false;
 
-            if (rangeKeyAttribute != null && rangeKey != null)
+            if (sortKeyAttribute != null && sortKey != null)
             {
-                if (!item.TryGetValue(rangeKeyAttribute.ToString(), out var r) || (DynamoDBKeyValue)r != rangeKey)
+                if (!item.TryGetValue(sortKeyAttribute.ToString(), out var r) || (DynamoDBKeyValue)r != sortKey)
                     return false;
             }
 

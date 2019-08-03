@@ -10,14 +10,14 @@ namespace AbreVinci.Amazon.DynamoDB.Mock
     [PublicAPI]
     public class MockDynamoDBTableContent
     {
-        public MockDynamoDBTableContent(DynamoDBAttributePath hashKeyAttribute, DynamoDBAttributePath rangeKeyAttribute = null)
+        public MockDynamoDBTableContent(DynamoDBAttributePath partitionKeyAttribute, DynamoDBAttributePath sortKeyAttribute = null)
         {
-            HashKeyAttribute = hashKeyAttribute;
-            RangeKeyAttribute = rangeKeyAttribute;
+            PartitionKeyAttribute = partitionKeyAttribute;
+            SortKeyAttribute = sortKeyAttribute;
         }
         
-        public DynamoDBAttributePath HashKeyAttribute { get; }
-        public DynamoDBAttributePath RangeKeyAttribute { get; }
+        public DynamoDBAttributePath PartitionKeyAttribute { get; }
+        public DynamoDBAttributePath SortKeyAttribute { get; }
         public List<DynamoDBMap> Items { get; set; } = new List<DynamoDBMap>();
         public List<DynamoDBMap> ConsistentReadOnlyItems { get; set; } = new List<DynamoDBMap>();
     }
